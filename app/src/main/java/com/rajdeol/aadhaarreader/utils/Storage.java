@@ -12,8 +12,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class Storage {
-    protected static final String STORAGE_FILE_NAME = "data_storage.txt";
-    protected Context mContext;
+    private static final String STORAGE_FILE_NAME = "data_storage.txt";
+    private final Context mContext;
 
     public Storage(Context activity) {
         mContext = activity;
@@ -31,7 +31,7 @@ public class Storage {
 
     public String readFromFile() {
         // ensure file is created
-        checkFilePresent(STORAGE_FILE_NAME);
+        checkFilePresent();
 
         String ret = "";
 
@@ -41,7 +41,7 @@ public class Storage {
             if (inputStream != null) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                String receiveString = "";
+                String receiveString;
                 StringBuilder stringBuilder = new StringBuilder();
 
                 while ((receiveString = bufferedReader.readLine()) != null) {
@@ -60,8 +60,8 @@ public class Storage {
         return ret;
     }
 
-    private void checkFilePresent(String fileName) {
-        String path = mContext.getFilesDir().getAbsolutePath() + "/" + fileName;
+    private void checkFilePresent() {
+        String path = mContext.getFilesDir().getAbsolutePath() + "/" + Storage.STORAGE_FILE_NAME;
         File file = new File(path);
         if (!file.exists()) {
             try {

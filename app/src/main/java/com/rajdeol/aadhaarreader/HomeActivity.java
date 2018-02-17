@@ -1,4 +1,5 @@
 package com.rajdeol.aadhaarreader;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -29,42 +30,70 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+
+@SuppressWarnings("ConstantConditions")
 public class HomeActivity extends AppCompatActivity {
+    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     // variables to store extracted xml data
-    String uid, name, gender, yearOfBirth, careOf, villageTehsil, postOffice, district, state, postCode, dateOfBirth;
+    private String uid;
+    private String name;
+    private String gender;
+    private String yearOfBirth;
+    private String careOf;
+    private String villageTehsil;
+    private String postOffice;
+    private String district;
+    private String state;
+    private String postCode;
+    private String dateOfBirth;
     // UI Elements
-    TextView tv_sd_uid, tv_sd_name, tv_sd_gender, tv_sd_yob, tv_sd_co, tv_sd_vtc, tv_sd_po, tv_sd_dist, tv_sd_dob,
-            tv_sd_state, tv_sd_pc, tv_cancel_action;
-    LinearLayout ll_scanned_data_wrapper, ll_data_wrapper, ll_action_button_wrapper;
-    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
+    private TextView tv_sd_uid;
+    private TextView tv_sd_name;
+    private TextView tv_sd_gender;
+    private TextView tv_sd_yob;
+    private TextView tv_sd_co;
+    private TextView tv_sd_vtc;
+    private TextView tv_sd_po;
+    private TextView tv_sd_dist;
+    private TextView tv_sd_dob;
+    private TextView tv_sd_state;
+    private TextView tv_sd_pc;
+    private TextView tv_cancel_action;
+    private LinearLayout ll_scanned_data_wrapper;
+    private LinearLayout ll_data_wrapper;
+    private LinearLayout ll_action_button_wrapper;
     // Storage
-    Storage storage;
+    private Storage storage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //hide the default action bar
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.activity_home);
         // init the UI Elements
-        tv_sd_uid = (TextView) findViewById(R.id.tv_sd_uid);
-        tv_sd_name = (TextView) findViewById(R.id.tv_sd_name);
-        tv_sd_gender = (TextView) findViewById(R.id.tv_sd_gender);
-        tv_sd_yob = (TextView) findViewById(R.id.tv_sd_yob);
-        tv_sd_co = (TextView) findViewById(R.id.tv_sd_co);
-        tv_sd_vtc = (TextView) findViewById(R.id.tv_sd_vtc);
-        tv_sd_po = (TextView) findViewById(R.id.tv_sd_po);
-        tv_sd_dist = (TextView) findViewById(R.id.tv_sd_dist);
-        tv_sd_state = (TextView) findViewById(R.id.tv_sd_state);
-        tv_sd_pc = (TextView) findViewById(R.id.tv_sd_pc);
-        tv_cancel_action = (TextView) findViewById(R.id.tv_cancel_action);
-        tv_sd_dob = (TextView) findViewById(R.id.tv_sd_dob);
-        ll_scanned_data_wrapper = (LinearLayout) findViewById(R.id.ll_scanned_data_wrapper);
-        ll_data_wrapper = (LinearLayout) findViewById(R.id.ll_data_wrapper);
-        ll_action_button_wrapper = (LinearLayout) findViewById(R.id.ll_action_button_wrapper);
+        tv_sd_uid = findViewById(R.id.tv_sd_uid);
+        tv_sd_name = findViewById(R.id.tv_sd_name);
+        tv_sd_gender = findViewById(R.id.tv_sd_gender);
+        tv_sd_yob = findViewById(R.id.tv_sd_yob);
+        tv_sd_co = findViewById(R.id.tv_sd_co);
+        tv_sd_vtc = findViewById(R.id.tv_sd_vtc);
+        tv_sd_po = findViewById(R.id.tv_sd_po);
+        tv_sd_dist = findViewById(R.id.tv_sd_dist);
+        tv_sd_state = findViewById(R.id.tv_sd_state);
+        tv_sd_pc = findViewById(R.id.tv_sd_pc);
+        tv_cancel_action = findViewById(R.id.tv_cancel_action);
+        tv_sd_dob = findViewById(R.id.tv_sd_dob);
+        ll_scanned_data_wrapper = findViewById(R.id.ll_scanned_data_wrapper);
+        ll_data_wrapper = findViewById(R.id.ll_data_wrapper);
+        ll_action_button_wrapper = findViewById(R.id.ll_action_button_wrapper);
         //init storage
         storage = new Storage(this);
     }
-    public void scanNow(View view) {
+
+    public void scanNow() {
         if (checkAndRequestPermissions()) {
             IntentIntegrator integrator = new IntentIntegrator(this);
             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
@@ -74,6 +103,7 @@ public class HomeActivity extends AppCompatActivity {
             integrator.initiateScan();
         }
     }
+
     private boolean checkAndRequestPermissions() {
         int permissionCamera = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA);
@@ -114,6 +144,7 @@ public class HomeActivity extends AppCompatActivity {
         }
         return true;
     }
+
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         //retrieve scan result
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
@@ -128,7 +159,8 @@ public class HomeActivity extends AppCompatActivity {
             toast.show();
         }
     }
-    protected void processScannedData(String scanData) {
+
+    private void processScannedData(String scanData) {
         Log.d("Rajdeol", scanData);
         XmlPullParserFactory pullParserFactory;
         try {
@@ -183,7 +215,8 @@ public class HomeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }// EO function
-    public void displayScannedData() {
+
+    private void displayScannedData() {
         ll_data_wrapper.setVisibility(View.GONE);
         ll_scanned_data_wrapper.setVisibility(View.VISIBLE);
         ll_action_button_wrapper.setVisibility(View.VISIBLE);
@@ -212,12 +245,14 @@ public class HomeActivity extends AppCompatActivity {
         tv_sd_pc.setText(postCode);
         tv_sd_dob.setText(dateOfBirth);
     }
-    public void showHome(View view) {
+
+    public void showHome() {
         ll_data_wrapper.setVisibility(View.VISIBLE);
         ll_scanned_data_wrapper.setVisibility(View.GONE);
         ll_action_button_wrapper.setVisibility(View.GONE);
     }
-    public void saveData(View view) {
+
+    public void saveData() {
         // We are going to use json to save our data
         // create json object
         JSONObject aadhaarData = new JSONObject();
@@ -296,7 +331,8 @@ public class HomeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    public void showSavedCards(View view) {
+
+    public void showSavedCards() {
         // intent for SavedAadhaarcardActivity
         Intent intent = new Intent(this, SavedAadhaarCardActivity.class);
         // Start Activity

@@ -22,19 +22,20 @@ public class SavedAadhaarCardActivity extends AppCompatActivity {
     private ListView lv_saved_card_list;
     private TextView tv_no_saved_card;
     private Storage storage;
-    private JSONArray storageDataArray;
-    private ArrayList<JSONObject> cardDataList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //hide the default action bar
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_aadhaar_card);
 
         //init UI elements
-        tv_no_saved_card = (TextView)findViewById(R.id.tv_no_saved_card);
-        lv_saved_card_list = (ListView)findViewById(R.id.lv_saved_card_list);
+        tv_no_saved_card = findViewById(R.id.tv_no_saved_card);
+        lv_saved_card_list = findViewById(R.id.lv_saved_card_list);
 
         // init storage
         storage = new Storage(this);
@@ -46,7 +47,7 @@ public class SavedAadhaarCardActivity extends AppCompatActivity {
         if(storageData.length() > 0){
             try {
                 // convert JSON string to array
-                storageDataArray = new JSONArray(storageData);
+                JSONArray storageDataArray = new JSONArray(storageData);
 
                 // handle case of empty JSONArray after delete
                 if(storageDataArray.length()<1){
@@ -58,16 +59,16 @@ public class SavedAadhaarCardActivity extends AppCompatActivity {
                 }
 
                 // init data list
-                cardDataList = new <JSONObject>ArrayList();
+                ArrayList<JSONObject> cardDataList = new <JSONObject>ArrayList();
 
                 //prepare the data list for list adapter
-                for(int i = 0; i<storageDataArray.length();i++){
+                for(int i = 0; i< storageDataArray.length(); i++){
                     JSONObject dataObject = storageDataArray.getJSONObject(i);
                     cardDataList.add(dataObject);
                 }
 
                 // create List Adapter with data
-                ArrayAdapter<ArrayList> savedCardListAdapter = new CardListAdapter(this,cardDataList);
+                ArrayAdapter<ArrayList> savedCardListAdapter = new CardListAdapter(this, cardDataList);
                 // populate list
                 lv_saved_card_list.setAdapter(savedCardListAdapter);
 

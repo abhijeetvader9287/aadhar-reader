@@ -15,60 +15,55 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class CardListAdapter extends ArrayAdapter<ArrayList>{
-
-    // UI Elements
-    TextView tv_sd_uid,tv_sd_name,tv_sd_gender,tv_sd_yob,tv_sd_co,tv_sd_vtc,tv_sd_po,tv_sd_dist,tv_sd_dob,
-            tv_sd_state,tv_sd_pc,tv_delete_card;
-
-    // variables to contain extracted values
-    String uid,name,gender,yearOfBirth,careOf,villageTehsil,postOffice,district,state,postCode,dob;
+public class CardListAdapter extends ArrayAdapter<ArrayList> {
 
     private final SavedAadhaarCardActivity context;
     private final ArrayList<JSONObject> values;
 
-    public CardListAdapter(SavedAadhaarCardActivity context, ArrayList values){
-        super(context,-1, values);
+    public CardListAdapter(SavedAadhaarCardActivity context, ArrayList values) {
+        super(context, -1, values);
         this.context = context;
         this.values = values;
     }
 
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         //inflate the row with layout
-        View rowView = inflater.inflate(R.layout.aadharcard_list,parent,false);
+        View rowView = inflater != null ? inflater.inflate(R.layout.aadharcard_list, parent, false) : null;
 
         // initiate UI elements
-        tv_sd_uid = (TextView)rowView.findViewById(R.id.tv_sd_uid);
-        tv_sd_name = (TextView)rowView.findViewById(R.id.tv_sd_name);
-        tv_sd_gender = (TextView)rowView.findViewById(R.id.tv_sd_gender);
-        tv_sd_yob = (TextView)rowView.findViewById(R.id.tv_sd_yob);
-        tv_sd_co = (TextView)rowView.findViewById(R.id.tv_sd_co);
-        tv_sd_vtc = (TextView)rowView.findViewById(R.id.tv_sd_vtc);
-        tv_sd_po = (TextView)rowView.findViewById(R.id.tv_sd_po);
-        tv_sd_dist = (TextView)rowView.findViewById(R.id.tv_sd_dist);
-        tv_sd_state = (TextView)rowView.findViewById(R.id.tv_sd_state);
-        tv_sd_pc = (TextView)rowView.findViewById(R.id.tv_sd_pc);
-        tv_delete_card = (TextView)rowView.findViewById(R.id.tv_delete_card);
-        tv_sd_dob = (TextView)rowView.findViewById(R.id.tv_sd_dob);
+        assert rowView != null;
+        TextView tv_sd_uid = rowView.findViewById(R.id.tv_sd_uid);
+        TextView tv_sd_name = rowView.findViewById(R.id.tv_sd_name);
+        TextView tv_sd_gender = rowView.findViewById(R.id.tv_sd_gender);
+        TextView tv_sd_yob = rowView.findViewById(R.id.tv_sd_yob);
+        TextView tv_sd_co = rowView.findViewById(R.id.tv_sd_co);
+        TextView tv_sd_vtc = rowView.findViewById(R.id.tv_sd_vtc);
+        TextView tv_sd_po = rowView.findViewById(R.id.tv_sd_po);
+        TextView tv_sd_dist = rowView.findViewById(R.id.tv_sd_dist);
+        TextView tv_sd_state = rowView.findViewById(R.id.tv_sd_state);
+        TextView tv_sd_pc = rowView.findViewById(R.id.tv_sd_pc);
+        TextView tv_delete_card = rowView.findViewById(R.id.tv_delete_card);
+        TextView tv_sd_dob = rowView.findViewById(R.id.tv_sd_dob);
 
 
         // populate UI elements
         try {
             JSONObject jObj = values.get(position);
-            uid = jObj.getString(DataAttributes.AADHAR_UID_ATTR);
-            name = jObj.getString(DataAttributes.AADHAR_NAME_ATTR);
-            gender = jObj.getString(DataAttributes.AADHAR_GENDER_ATTR);
-            yearOfBirth = jObj.getString(DataAttributes.AADHAR_YOB_ATTR);
-            careOf = jObj.getString(DataAttributes.AADHAR_CO_ATTR);
-            villageTehsil = jObj.getString(DataAttributes.AADHAR_VTC_ATTR);
-            postOffice = jObj.getString(DataAttributes.AADHAR_PO_ATTR);
-            district = jObj.getString(DataAttributes.AADHAR_DIST_ATTR);
-            state = jObj.getString(DataAttributes.AADHAR_STATE_ATTR);
-            postCode = jObj.getString(DataAttributes.AADHAR_PC_ATTR);
-            dob =  jObj.getString(DataAttributes.AADHAR_DOB_ATTR);
+            String uid = jObj.getString(DataAttributes.AADHAR_UID_ATTR);
+            String name = jObj.getString(DataAttributes.AADHAR_NAME_ATTR);
+            String gender = jObj.getString(DataAttributes.AADHAR_GENDER_ATTR);
+            String yearOfBirth = jObj.getString(DataAttributes.AADHAR_YOB_ATTR);
+            String careOf = jObj.getString(DataAttributes.AADHAR_CO_ATTR);
+            String villageTehsil = jObj.getString(DataAttributes.AADHAR_VTC_ATTR);
+            String postOffice = jObj.getString(DataAttributes.AADHAR_PO_ATTR);
+            String district = jObj.getString(DataAttributes.AADHAR_DIST_ATTR);
+            String state = jObj.getString(DataAttributes.AADHAR_STATE_ATTR);
+            String postCode = jObj.getString(DataAttributes.AADHAR_PC_ATTR);
+            String dob = jObj.getString(DataAttributes.AADHAR_DOB_ATTR);
             // update UI Elements
             tv_sd_uid.setText(uid);
             tv_sd_name.setText(name);
