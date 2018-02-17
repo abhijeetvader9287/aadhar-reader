@@ -31,6 +31,9 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Home activity.
+ */
 @SuppressWarnings("ConstantConditions")
 public class HomeActivity extends AppCompatActivity {
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
@@ -93,6 +96,9 @@ public class HomeActivity extends AppCompatActivity {
         storage = new Storage(this);
     }
 
+    /**
+     * Scan now.
+     */
     public void scanNow() {
         if (checkAndRequestPermissions()) {
             IntentIntegrator integrator = new IntentIntegrator(this);
@@ -246,12 +252,18 @@ public class HomeActivity extends AppCompatActivity {
         tv_sd_dob.setText(dateOfBirth);
     }
 
+    /**
+     * Show home.
+     */
     public void showHome() {
         ll_data_wrapper.setVisibility(View.VISIBLE);
         ll_scanned_data_wrapper.setVisibility(View.GONE);
         ll_action_button_wrapper.setVisibility(View.GONE);
     }
 
+    /**
+     * Save data.
+     */
     public void saveData() {
         // We are going to use json to save our data
         // create json object
@@ -332,10 +344,16 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Show saved cards.
+     */
     public void showSavedCards() {
         // intent for SavedAadhaarcardActivity
         Intent intent = new Intent(this, SavedAadhaarCardActivity.class);
         // Start Activity
         startActivity(intent);
+    }
+
+    public void scanNow(View view) {
     }
 }// EO class

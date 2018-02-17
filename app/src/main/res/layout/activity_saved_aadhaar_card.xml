@@ -8,32 +8,37 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.rajdeol.aadhaarreader.SavedAadhaarCardActivity">
+
     <LinearLayout
         android:id="@+id/ll_saved_card_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
-            android:onClick="showHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.actionButton"
             android:background="@color/action_save_background"
+            android:gravity="center|start"
+            android:onClick="showHome"
             android:text="@string/label_home"
-            android:gravity="center|start"/>
+            android:theme="@style/AppTheme.actionButton" />
+
         <TextView
             android:id="@+id/tv_no_saved_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/no_saved_card"
-            android:visibility="gone"
             android:layout_margin="@dimen/no_card_msg_margin"
-            android:textSize="@dimen/no_card_msg_text_size"/>
+            android:text="@string/no_saved_card"
+            android:textSize="@dimen/no_card_msg_text_size"
+            android:visibility="gone" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_below="@+id/ll_saved_card_message"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_saved_card_message">
+
         <ListView
             android:id="@+id/lv_saved_card_list"
             android:layout_width="match_parent"

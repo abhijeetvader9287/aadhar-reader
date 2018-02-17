@@ -11,14 +11,27 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+/**
+ * The type Storage.
+ */
 public class Storage {
     private static final String STORAGE_FILE_NAME = "data_storage.txt";
     private final Context mContext;
 
+    /**
+     * Instantiates a new Storage.
+     *
+     * @param activity the activity
+     */
     public Storage(Context activity) {
         mContext = activity;
     }
 
+    /**
+     * Write to file.
+     *
+     * @param data the data
+     */
     public void writeToFile(String data) {
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(mContext.openFileOutput(STORAGE_FILE_NAME, Context.MODE_PRIVATE));
@@ -29,6 +42,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Read from file string.
+     *
+     * @return the string
+     */
     public String readFromFile() {
         // ensure file is created
         checkFilePresent();

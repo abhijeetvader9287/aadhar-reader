@@ -15,11 +15,20 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * The type Card list adapter.
+ */
 public class CardListAdapter extends ArrayAdapter<ArrayList> {
 
     private final SavedAadhaarCardActivity context;
     private final ArrayList<JSONObject> values;
 
+    /**
+     * Instantiates a new Card list adapter.
+     *
+     * @param context the context
+     * @param values  the values
+     */
     public CardListAdapter(SavedAadhaarCardActivity context, ArrayList values) {
         super(context, -1, values);
         this.context = context;
