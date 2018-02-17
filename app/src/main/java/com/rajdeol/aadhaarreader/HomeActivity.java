@@ -1,5 +1,4 @@
 package com.rajdeol.aadhaarreader;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -99,7 +98,7 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * Scan now.
      */
-    public void scanNow() {
+    public void scanNow(View view) {
         if (checkAndRequestPermissions()) {
             IntentIntegrator integrator = new IntentIntegrator(this);
             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
@@ -109,7 +108,6 @@ public class HomeActivity extends AppCompatActivity {
             integrator.initiateScan();
         }
     }
-
     private boolean checkAndRequestPermissions() {
         int permissionCamera = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA);
@@ -150,7 +148,6 @@ public class HomeActivity extends AppCompatActivity {
         }
         return true;
     }
-
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         //retrieve scan result
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
@@ -165,7 +162,6 @@ public class HomeActivity extends AppCompatActivity {
             toast.show();
         }
     }
-
     private void processScannedData(String scanData) {
         Log.d("Rajdeol", scanData);
         XmlPullParserFactory pullParserFactory;
@@ -221,7 +217,6 @@ public class HomeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }// EO function
-
     private void displayScannedData() {
         ll_data_wrapper.setVisibility(View.GONE);
         ll_scanned_data_wrapper.setVisibility(View.VISIBLE);
@@ -255,7 +250,7 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * Show home.
      */
-    public void showHome() {
+    public void showHome(View view) {
         ll_data_wrapper.setVisibility(View.VISIBLE);
         ll_scanned_data_wrapper.setVisibility(View.GONE);
         ll_action_button_wrapper.setVisibility(View.GONE);
@@ -264,7 +259,7 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * Save data.
      */
-    public void saveData() {
+    public void saveData(View view) {
         // We are going to use json to save our data
         // create json object
         JSONObject aadhaarData = new JSONObject();
@@ -347,13 +342,11 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * Show saved cards.
      */
-    public void showSavedCards() {
+    public void showSavedCards(View view) {
         // intent for SavedAadhaarcardActivity
         Intent intent = new Intent(this, SavedAadhaarCardActivity.class);
         // Start Activity
         startActivity(intent);
     }
 
-    public void scanNow(View view) {
-    }
 }// EO class
