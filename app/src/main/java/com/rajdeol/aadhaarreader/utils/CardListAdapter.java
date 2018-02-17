@@ -15,10 +15,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
- * Adapter class to inflate saved Aadharcard list
- * Created by RajinderPal on 6/22/2016.
- */
 public class CardListAdapter extends ArrayAdapter<ArrayList>{
 
     // UI Elements
@@ -39,7 +35,7 @@ public class CardListAdapter extends ArrayAdapter<ArrayList>{
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         //inflate the row with layout
         View rowView = inflater.inflate(R.layout.aadharcard_list,parent,false);

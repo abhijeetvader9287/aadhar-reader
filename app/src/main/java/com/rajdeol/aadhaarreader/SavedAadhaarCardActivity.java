@@ -81,10 +81,6 @@ public class SavedAadhaarCardActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * delete saved aadhaar card
-     * @param uid
-     */
     public void deleteCard(String uid){
         // read data from storage
         String storageData = storage.readFromFile();
@@ -124,10 +120,6 @@ public class SavedAadhaarCardActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Start Home Activity
-     * @param view
-     */
     public void showHome(View view){
         // intent for HomeActivity
         Intent intent = new Intent(this,HomeActivity.class);

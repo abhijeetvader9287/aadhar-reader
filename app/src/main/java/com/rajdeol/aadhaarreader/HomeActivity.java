@@ -2,6 +2,7 @@ package com.rajdeol.aadhaarreader;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -63,11 +64,6 @@ public class HomeActivity extends AppCompatActivity {
         //init storage
         storage = new Storage(this);
     }
-    /**
-     * onclick handler for scan new card
-     *
-     * @param view
-     */
     public void scanNow(View view) {
         if (checkAndRequestPermissions()) {
             IntentIntegrator integrator = new IntentIntegrator(this);
@@ -87,10 +83,15 @@ public class HomeActivity extends AppCompatActivity {
                 Manifest.permission.READ_PHONE_STATE);
         int writeStoragePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int locationPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
-        int readStoragePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        int readStoragePermission = 0;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            readStoragePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
         List<String> listPermissionsNeeded = new ArrayList<>();
         if (readStoragePermission != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+            }
         }
         if (writeStoragePermission != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -113,13 +114,6 @@ public class HomeActivity extends AppCompatActivity {
         }
         return true;
     }
-    /**
-     * function handle scan result
-     *
-     * @param requestCode
-     * @param resultCode
-     * @param intent
-     */
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         //retrieve scan result
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
@@ -134,11 +128,6 @@ public class HomeActivity extends AppCompatActivity {
             toast.show();
         }
     }
-    /**
-     * process xml string received from aadhaar card QR code
-     *
-     * @param scanData
-     */
     protected void processScannedData(String scanData) {
         Log.d("Rajdeol", scanData);
         XmlPullParserFactory pullParserFactory;
@@ -194,9 +183,6 @@ public class HomeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }// EO function
-    /**
-     * show scanned information
-     */
     public void displayScannedData() {
         ll_data_wrapper.setVisibility(View.GONE);
         ll_scanned_data_wrapper.setVisibility(View.VISIBLE);
@@ -226,19 +212,11 @@ public class HomeActivity extends AppCompatActivity {
         tv_sd_pc.setText(postCode);
         tv_sd_dob.setText(dateOfBirth);
     }
-    /**
-     * display home screen onclick listener for cancel button
-     *
-     * @param view
-     */
     public void showHome(View view) {
         ll_data_wrapper.setVisibility(View.VISIBLE);
         ll_scanned_data_wrapper.setVisibility(View.GONE);
         ll_action_button_wrapper.setVisibility(View.GONE);
     }
-    /**
-     * save data to storage
-     */
     public void saveData(View view) {
         // We are going to use json to save our data
         // create json object
@@ -318,12 +296,6 @@ public class HomeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    /**
-     * onclick handler for show saved cards
-     * this will start the SavedAadhaarCardActivity
-     *
-     * @param view
-     */
     public void showSavedCards(View view) {
         // intent for SavedAadhaarcardActivity
         Intent intent = new Intent(this, SavedAadhaarCardActivity.class);

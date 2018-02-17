@@ -20,7 +20,7 @@
             android:theme="@style/AppTheme.actionButton"
             android:background="@color/action_save_background"
             android:text="@string/label_home"
-            android:gravity="center|left"/>
+            android:gravity="center|start"/>
         <TextView
             android:id="@+id/tv_no_saved_card"
             android:layout_width="match_parent"

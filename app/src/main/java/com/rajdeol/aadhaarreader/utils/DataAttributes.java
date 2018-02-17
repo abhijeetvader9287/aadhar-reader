@@ -1,7 +1,4 @@
 package com.rajdeol.aadhaarreader.utils;
-/**
- * Created by RajinderPal on 6/22/2016.
- */
 public class DataAttributes {
     // declare xml attributes of aadhar card QR code xml response
     public static final String AADHAAR_DATA_TAG = "PrintLetterBarcodeData",
