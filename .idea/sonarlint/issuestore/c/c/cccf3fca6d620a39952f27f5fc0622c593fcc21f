@@ -1,0 +1,6 @@
+
+[
+squid:S899"BDo something with the "boolean" value returned by "createNewFile".(Ğ’Íùÿÿÿÿ
+lsquid:S2095"PUse try-with-resources or close this "OutputStreamWriter" in a "finally" clause.(ú„ÃÕ8Çï·½š,
+;squid:S1075"&Remove this hard-coded path-delimiter.(—«Àª
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ

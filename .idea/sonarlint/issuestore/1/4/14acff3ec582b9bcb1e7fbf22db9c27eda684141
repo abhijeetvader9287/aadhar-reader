@@ -1,0 +1,25 @@
+
+osquid:S00116"TRename this field "tv_sd_dob" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßûòşÿÿÿÿ
+Isquid:S1066"/Merge this if statement with the enclosing one.(“ñ–úÿÿÿÿ
+Isquid:S1481"/Remove this unused "scanFormat" local variable.(œÊ÷¤úÿÿÿÿ
+lsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Ù£ãÿÿÿÿÿ
+Lsquid:S1135"2Complete the task associated to this TODO comment.(ÕÌ®şÿÿÿÿ
+jsquid:S00116"TRename this field "tv_sd_vtc" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôë±Ü
+Xsquid:S1854">Remove this useless assignment to local variable "scanFormat".(œÊ÷¤úÿÿÿÿ
+nsquid:S00116"SRename this field "tv_sd_po" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨…°ûÿÿÿÿ
+psquid:S00116"URename this field "tv_sd_dist" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼“òÈøÿÿÿÿ
+Zsquid:S2147"ECombine this catch with the one at line 218, which has the same body.(ï­£Ä
+ksquid:S00116"URename this field "tv_sd_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×ÔÕµ
+}squid:S00116"bRename this field "ll_scanned_data_wrapper" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®¿£ûøÿÿÿÿ
+csquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(Æ¼¾Î
+ysquid:S00116"cRename this field "ll_action_button_wrapper" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çå×’
+rsquid:S00116"WRename this field "tv_sd_gender" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛĞœÖûÿÿÿÿ
+]squid:S1192"HDefine a constant instead of duplicating this literal "Rajdeol" 4 times.(ÉÓÏ
+qsquid:S00116"[Rename this field "tv_cancel_action" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™ÌÂâ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+osquid:S00116"TRename this field "tv_sd_uid" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁÉ»¬ùÿÿÿÿ
+nsquid:S00116"SRename this field "tv_sd_co" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áçÙ¤øÿÿÿÿ
+osquid:S00116"TRename this field "tv_sd_yob" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÃÑçÿÿÿÿÿ
+qsquid:S00116"VRename this field "tv_sd_state" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÿÀƒøÿÿÿÿ
+usquid:S00116"ZRename this field "ll_data_wrapper" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„©ÕØşÿÿÿÿ
+nsquid:S00116"SRename this field "tv_sd_pc" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦õêÀûÿÿÿÿ

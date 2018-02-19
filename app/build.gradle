@@ -24,6 +24,7 @@ repositories {
 
     maven {
         url "http://dl.bintray.com/journeyapps/maven"
+
     }
 }
 // Added by raj ends
@@ -50,4 +51,18 @@ dependencies {
     // Older versions e.g. 2.2 may also work if you need support for older Android versions.
     compile 'com.google.zxing:core:3.0.1'
     // Added by raj ends
+}
+sonarqube {
+    properties {
+        property "sonar.projectName", "MyApplication2"
+        property "sonar.projectKey", "SQKey"
+        property "sonar.sources","src/main/java"
+        property "sonar.language","java"
+        property "sonar.sourceEncoding", "UTF-8"
+
+//        property "sonar.exclusions", "src/main/java/com/foo/Foo.java"
+    }
+
+        androidVariant 'debug'
+
 }

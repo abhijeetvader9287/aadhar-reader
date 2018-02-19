@@ -1,4 +1,5 @@
 package com.rajdeol.aadhaarreader;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -108,6 +109,7 @@ public class HomeActivity extends AppCompatActivity {
             integrator.initiateScan();
         }
     }
+
     private boolean checkAndRequestPermissions() {
         int permissionCamera = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA);
@@ -148,6 +150,7 @@ public class HomeActivity extends AppCompatActivity {
         }
         return true;
     }
+
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         //retrieve scan result
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
@@ -162,6 +165,7 @@ public class HomeActivity extends AppCompatActivity {
             toast.show();
         }
     }
+
     private void processScannedData(String scanData) {
         Log.d("Rajdeol", scanData);
         XmlPullParserFactory pullParserFactory;
@@ -217,6 +221,7 @@ public class HomeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }// EO function
+
     private void displayScannedData() {
         ll_data_wrapper.setVisibility(View.GONE);
         ll_scanned_data_wrapper.setVisibility(View.VISIBLE);
